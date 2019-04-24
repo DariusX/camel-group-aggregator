@@ -5,7 +5,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.bindy.csv.BindyCsvDataFormat;
 import org.apache.camel.spi.DataFormat;
 
-public class FileReaderRoute extends RouteBuilder {
+public class FileReaderRouteBuilder extends RouteBuilder {
 
     private static final String FILE_PATH = System.getProperty("user.dir") + "/src/test/resources/in";
 
@@ -14,8 +14,8 @@ public class FileReaderRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-       // from("file://c:/temp/camel/in?noop=true")
-       from("file:"+FILE_PATH+"?noop=true")
+        // from("file://c:/temp/camel/in?noop=true")
+        from("file:" + FILE_PATH + "?noop=true")
                 .log("Detected file")
                 .split().tokenize("\n")
                 .streaming()

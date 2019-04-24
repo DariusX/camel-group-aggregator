@@ -23,6 +23,22 @@ public class GroupedRecordAggregator extends AbstractListAggregationStrategy<Gro
         return body;
     }
 
+//    @Override
+//    public Exchange aggregate(Exchange oldExchange, Exchange newExchange) {
+//        Exchange aggrgatedExchange = super.aggregate(oldExchange, newExchange);
+//
+//        //Even though this detects the last record. Setting AGGREGATION_COMPLETE_CURRENT_GROUP does not
+//        //flush out the last aggregation. So, maybe it does not play well with the preComplete
+//        //A completion timeout has to be used, to flush the last group
+//        boolean lastExchange = newExchange.getProperty("CamelSplitComplete", Boolean.class).booleanValue();
+//        if (lastExchange) {
+//            System.out.println("hello " + newExchange.getIn().getBody(GroupedRecord.class).toString());
+//            aggrgatedExchange.setProperty(Exchange.AGGREGATION_COMPLETE_CURRENT_GROUP, true);
+//        }
+//
+//        return aggrgatedExchange;
+//    }
+
     @Override
     public boolean preComplete(Exchange oldExchange, Exchange newExchange) {
 
